@@ -1,0 +1,38 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hotel_manag_mobile.ReservationsPage"
+             Title="Reservations">
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <!-- Picker pentru camere -->
+        <Picker x:Name="RoomPicker" Title="Select Room" />
+
+        <!-- DatePicker pentru Check-In -->
+        <DatePicker x:Name="CheckInDatePicker" />
+
+        <!-- DatePicker pentru Check-Out -->
+        <DatePicker x:Name="CheckOutDatePicker" />
+
+        <!-- Buton pentru salvarea rezervării -->
+        <Button Text="Submit Reservation" 
+                Clicked="OnSubmitReservationClicked" 
+                BackgroundColor="Green" 
+                TextColor="White" />
+
+        <!-- ListView pentru afișarea rezervărilor -->
+        <ListView x:Name="ReservationsListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="10">
+                            <Label Text="{Binding Room.RoomNumber}" FontSize="16" />
+                            <Label Text="{Binding Room.Type}" FontSize="14" />
+                            <Label Text="{Binding CheckInDate, StringFormat='Check-In: {0:MM/dd/yyyy}'}" FontSize="14" />
+                            <Label Text="{Binding CheckOutDate, StringFormat='Check-Out: {0:MM/dd/yyyy}'}" FontSize="14" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

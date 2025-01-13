@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hotel_manag_mobile.FacilitiesPage">
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Entry x:Name="FacilityNameEntry" Placeholder="Enter Facility Name" />
+
+     
+        <Entry x:Name="DescriptionEntry" Placeholder="Enter Description" />
+
+        <Entry x:Name="FacilityPriceEntry" Placeholder="Enter Price" Keyboard="Numeric" />
+
+     
+        <Button Text="Add Facility" Clicked="OnAddFacilityClicked" BackgroundColor="Green" TextColor="White" />
+
+        
+        <ListView x:Name="FacilitiesListView" HasUnevenRows="True">
+            <ListView.Header>
+                <Grid ColumnDefinitions="*,2*,*" Padding="10">
+                    <Label Text="Facility Name" FontAttributes="Bold" Grid.Column="0" />
+                    <Label Text="Description" FontAttributes="Bold" Grid.Column="1" />
+                    <Label Text="Price" FontAttributes="Bold" Grid.Column="2" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="*,2*,*" Padding="10">
+                            <Label Text="{Binding FacilityName}" Grid.Column="0" FontSize="16" />
+                            <Label Text="{Binding Description}" Grid.Column="1" FontSize="16" />
+                            <Label Text="{Binding Price}" Grid.Column="2" FontSize="16" />
+                            <Button Text="Delete"
+                                WidthRequest="80"
+                                HeightRequest="40"
+                                Grid.Column="3"
+                                CommandParameter="{Binding .}"
+                                Clicked="OnDeleteFacilityClicked"
+                                BackgroundColor="Red"
+                                TextColor="White" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </VerticalStackLayout>
+</ContentPage>

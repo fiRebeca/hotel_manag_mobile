@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hotel_manag_mobile.RoomsPage"
+             Title="Manage Rooms">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        
+        <Entry x:Name="RoomNumberEntry" Placeholder="Room Number" Keyboard="Numeric" />
+
+        
+        <Picker x:Name="RoomTypePicker" Title="Select Room Type">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Single</x:String>
+                    <x:String>Double</x:String>
+                    <x:String>Suite</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        
+        <Entry x:Name="RoomPriceEntry" Placeholder="Price" Keyboard="Numeric" />
+
+        
+        <Button Text="Add Room" Clicked="OnAddRoomClicked" BackgroundColor="Green" TextColor="White" />
+
+        
+        <ListView x:Name="RoomsListView" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding DisplayInfo}" FontSize="20" VerticalOptions="Center" />
+                            <Button Text="Delete" BackgroundColor="Red" TextColor="White"
+                                    Clicked="OnDeleteRoomClicked"
+                                    CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hotel_manag_mobile.FeedbackPage"
+             Title="Feedback">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+      
+        <Picker x:Name="RoomPicker" Title="Select Room" />
+
+        <Editor x:Name="FeedbackTextEditor" Placeholder="Write your feedback here..." HeightRequest="100" />
+
+        <Label Text="Rating (1-5)" />
+        <Slider x:Name="RatingSlider" Minimum="1" Maximum="5" Value="3" />
+
+        <Button Text="Submit Feedback" Clicked="OnSubmitFeedbackClicked" BackgroundColor="Green" TextColor="White" />
+
+        <Label Text="Your Feedbacks" FontSize="20" HorizontalOptions="Center" />
+        <ListView x:Name="FeedbackListView" 
+          HasUnevenRows="True" 
+          SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding FeedbackText}" FontSize="16" />
+                            <Label Text="Rating:" FontSize="12" />
+                            <Label Text="{Binding Rating}" FontSize="14" />
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Button Text="Edit" Clicked="OnEditFeedbackClicked" CommandParameter="{Binding .}" />
+                                <Button Text="Delete" Clicked="OnDeleteFeedbackClicked" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

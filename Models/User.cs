@@ -5,6 +5,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace hotel_manag_mobile.Models
 {
@@ -13,11 +15,15 @@ namespace hotel_manag_mobile.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        [MaxLength(100)]
+        [SQLite.MaxLength(100)]
         public string Name { get; set; }
+        [SQLite.MaxLength(100), Unique]
+        public string Email { get; set; }
 
-        [MaxLength(10)]
+        [SQLite.MaxLength(10)]
         public string Password { get; set; }
+        [SQLite.MaxLength(20)]
+        public string Role { get; set; } /*employee sau guest*/
 
 
     }
